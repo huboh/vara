@@ -26,7 +26,7 @@ See the [documentation](https://pkg.go.dev/github.com/huboh/vara#section-documen
 
 Install Vara in your application with the following command.
 
-```go
+```bash
 go get github.com/huboh/vara@latest
 ```
 
