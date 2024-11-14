@@ -37,7 +37,7 @@ go get github.com/huboh/vara@latest
 
 ## Quick example
 
-Here's a minimal example to get you started. View the full example [here](https://github.com/huboh/vara/blob/main/examples/rest-api/modules/main.go)
+Here's a minimal example to get you started. View the full example [here](https://github.com/huboh/vara/blob/main/examples/rest-api/main.go)
 
 ```go
 const (
