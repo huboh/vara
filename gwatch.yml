@@ -1,0 +1,12 @@
+root: .
+exts: [go, tmp, tmpl, html]
+paths: [.]
+exclude: [.git, bin, vendor, testdata]
+delay: 100ms
+recursive: true
+log_prefix: vara
+run:
+    bin: ./bin/main
+    args: []
+build:
+    cmd: go build -o ./bin/main ./examples/rest-api
