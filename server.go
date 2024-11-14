@@ -13,14 +13,14 @@ import (
 	"time"
 )
 
-type HttpServer struct {
+type httpServer struct {
 	mux        *http.ServeMux
 	server     *http.Server
 	onShutdown func(context.Context) error
 }
 
-func newHttpServer(mux *http.ServeMux) *HttpServer {
-	return &HttpServer{
+func newHttpServer(mux *http.ServeMux) *httpServer {
+	return &httpServer{
 		mux: mux,
 		server: &http.Server{
 			Handler: mux,
@@ -32,7 +32,7 @@ func newHttpServer(mux *http.ServeMux) *HttpServer {
 // for incoming requests.
 //
 // Also listens for system signals like SIGINT and SIGTERM to enable graceful shutdown.
-func (s *HttpServer) Listen(host string, port string) error {
+func (s *httpServer) Listen(host string, port string) error {
 	errChan := make(chan error, 1)
 	sigChan := make(chan os.Signal, 1)
 	s.server.Addr = net.JoinHostPort(host, port)
@@ -61,7 +61,7 @@ func (s *HttpServer) Listen(host string, port string) error {
 }
 
 // Shutdown gracefully shuts down the HTTP server.
-func (s *HttpServer) Shutdown(c context.Context) error {
+func (s *httpServer) Shutdown(c context.Context) error {
 	fn := s.onShutdown
 	ctx, cancel := context.WithTimeout(c, (time.Second * 5))
 	defer cancel()
@@ -77,7 +77,7 @@ func (s *HttpServer) Shutdown(c context.Context) error {
 }
 
 // RegisterOnShutdown registers a function that will be called before shutting own.
-func (s *HttpServer) RegisterOnShutdown(f func(context.Context) error) error {
+func (s *httpServer) RegisterOnShutdown(f func(context.Context) error) error {
 	if f != nil {
 		s.onShutdown = f
 	}

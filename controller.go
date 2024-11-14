@@ -112,7 +112,7 @@ func (c *controller) runGuards(gCtx GuardContext, guards []*guard) (bool, error)
 
 func (c *controller) _registerRoutes() error {
 	return c.module.scope.Invoke(
-		func(server *HttpServer) error {
+		func(server *httpServer) error {
 			for _, rCfg := range c.Config().RouteConfigs {
 				// create route from config
 				r, err := newRoute(rCfg, c)

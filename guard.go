@@ -17,11 +17,11 @@ type GuardContext struct {
 	// Http contains the request and response information.
 	Http GuardContextHttp
 
-	// RouteCfg contains metadata and configuration specific to the route.
-	RouteCfg RouteConfig
+	// RouteConfig contains metadata and configuration specific to the route.
+	RouteConfig RouteConfig
 
-	// ControllerCfg contains metadata and configuration for the controller.
-	ControllerCfg ControllerConfig
+	// ControllerConfig contains metadata and configuration for the controller.
+	ControllerConfig ControllerConfig
 }
 
 // GuardContextHttp holds HTTP request and response information for GuardContext.
@@ -32,8 +32,8 @@ type GuardContextHttp struct {
 
 func newGuardCtx(c controller, r route, w http.ResponseWriter, req *http.Request) GuardContext {
 	return GuardContext{
-		RouteCfg:      *r.RouteConfig,
-		ControllerCfg: *c.Config(),
+		RouteConfig:      *r.RouteConfig,
+		ControllerConfig: *c.Config(),
 		Http: GuardContextHttp{
 			R: req,
 			W: w,

@@ -13,7 +13,7 @@ func newGuard() *guard {
 func (g *guard) Allow(gCtx vara.GuardContext) (bool, error) {
 	var isPublicRoute bool
 
-	if gCtx.RouteCfg.Metadata != nil {
+	if gCtx.RouteConfig.Metadata != nil {
 		// get metadata from route and determine if its a public route
 		isPublicRoute = true
 	}

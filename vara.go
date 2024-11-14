@@ -12,7 +12,7 @@ type App struct {
 	module     *module
 	container  *dig.Container
 	lifecycle  *Lifecycle
-	httpServer *HttpServer
+	httpServer *httpServer
 }
 
 // New initializes a new instance of App, configuring the root module and dependencies.
@@ -28,7 +28,7 @@ func New(module Module) (*App, error) {
 		return nil, err
 	}
 
-	err = c.Provide(func() *HttpServer { return svr })
+	err = c.Provide(func() *httpServer { return svr })
 	if err != nil {
 		return nil, err
 	}

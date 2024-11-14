@@ -91,19 +91,19 @@
 //
 //	func (m *UserModule) Config() *vara.ModuleConfig {
 //		return &vara.ModuleConfig{
-//			IsGlobal:         false,
-//			Imports:          []vara.Module{&config.Module{}},
-//			ExportsCtor:      []vara.ProviderConstructor{NewAuthService},
+//			IsGlobal:         		false,
+//			Imports:          		[]vara.Module{&config.Module{}},
+//			ExportConstructors:     []vara.ProviderConstructor{NewAuthService},
 //			ProviderConstructors:   []vara.ProviderConstructor{NewAuthService},
 //			ControllerConstructors: []vara.ControllerConstructor{},
 //		}
 //	}
 //
 // Module Configuration Options:
-//   - [IsGlobal]:		  Makes this module's exports available to all other modules
-//   - [Imports]:  		  Other modules required by this module
-//   - [ExportsCtor]: 	  Subset of providers that will be available to other modules
-//   - [ProviderConstructors]:   Internal services used within the module
+//   - [IsGlobal]: Makes this module's exports available to all other modules
+//   - [Imports]: Other modules required by this module
+//   - [ExportConstructors]: Subset of providers that will be available to other modules
+//   - [ProviderConstructors]: Internal services used within the module
 //   - [ControllerConstructors]: HTTP controllers
 //
 // # Lifecycle Management
@@ -144,14 +144,14 @@
 //
 //	func (c *UserController) Config() *vara.ControllerConfig {
 //		return &vara.ControllerConfig{
-//			Pattern: 	"/api/v1",
-//			GuardConstructors: []vara.GuardConstructor{newAuthGuard},
-//			RouteConfigs: []*vara.RouteConfig{
+//			Pattern:			"/api/v1",
+//			GuardConstructors:	[]vara.GuardConstructor{newAuthGuard},
+//			RouteConfigs:		[]*vara.RouteConfig{
 //				{
-//					Pattern: "/users",
-//					Method:  http.MethodGet,
-//					Handler: http.HandlerFunc(c.listUsers),
-//					GuardConstructors: []vara.GuardConstructor{newRateLimitGuard},
+//					Pattern:			"/users",
+//					Method:				http.MethodGet,
+//					Handler:			http.HandlerFunc(c.listUsers),
+//					GuardConstructors:	[]vara.GuardConstructor{newRateLimitGuard},
 //				},
 //			},
 //		}
